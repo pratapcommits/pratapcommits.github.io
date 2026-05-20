@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ankit Pratap Singh — Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0f0c;
+      --accent: #00e5a0;
+      --accent2: #00c9ff;
+      --text: #e8f5f0;
+      --muted: #7a9e8e;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Animated background blobs */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: float 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .blob1 { width: 500px; height: 500px; background: #00e5a0; top: -100px; left: -100px; animation-delay: 0s; }
+    .blob2 { width: 400px; height: 400px; background: #00c9ff; bottom: -100px; right: -100px; animation-delay: -4s; }
+    .blob3 { width: 300px; height: 300px; background: #00ff87; top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -2s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-30px) scale(1.05); }
+    }
+
+    /* Grid overlay */
+    .grid {
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(108,99,255,0.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(108,99,255,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* Main card */
+    .container {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(108,99,255,0.15);
+      border: 1px solid rgba(108,99,255,0.3);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.4rem 1.2rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.8s ease 0.1s both;
+      background: linear-gradient(135deg, #fff 0%, #a0ffe0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+
+    /* Countdown */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.8s ease 0.3s both;
+      flex-wrap: wrap;
+    }
+
+    .time-block {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      min-width: 80px;
+      backdrop-filter: blur(10px);
+    }
+
+    .time-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+      line-height: 1;
+    }
+
+    .time-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    /* Email form */
+    .notify-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 420px;
+      margin: 0 auto 3rem;
+      animation: fadeUp 0.8s ease 0.4s both;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .notify-form input {
+      flex: 1;
+      min-width: 200px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 0.85rem 1.2rem;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .notify-form input:focus {
+      border-color: var(--accent);
+    }
+
+    .notify-form input::placeholder { color: var(--muted); }
+
+    .notify-form button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 0.85rem 1.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .notify-form button:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .success-msg {
+      display: none;
+      color: #00e5a0;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Social icons */
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      animation: fadeUp 0.8s ease 0.5s both;
+    }
+
+    .social-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .social-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    /* Divider */
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #00e5a0, #00c9ff);
+      border-radius: 10px;
+      margin: 2rem auto;
+      animation: fadeUp 0.8s ease 0.35s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Particles */
+    .particle {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0;
+      animation: particle 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes particle {
+      0%   { opacity: 0; transform: translateY(100vh) scale(0); }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.2; }
+      100% { opacity: 0; transform: translateY(-10vh) scale(1.5); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background -->
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+  <div class="grid"></div>
+
+  <!-- Particles -->
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDelay = Math.random() * 6 + 's';
+      p.style.animationDuration = (5 + Math.random() * 5) + 's';
+      p.style.background = Math.random() > 0.5 ? '#00e5a0' : '#00c9ff';
+      document.body.appendChild(p);
+    }
+  </script>
+
+  <div class="container">
+    <div class="badge">✦ Something amazing is coming</div>
+
+    <h1>Ankit Pratap Singh</h1>
+
+    <p class="subtitle">Developer · Creator · Problem Solver<br>Building something great — stay tuned!</p>
+
+    <div class="divider"></div>
+
+    <!-- Countdown -->
+    <div class="countdown">
+      <div class="time-block">
+        <span class="time-number" id="days">00</span>
+        <span class="time-label">Days</span>
+      </div>
+      <div class="time-block">
+        <span class="time-number" id="hours">00</span>
+        <span class="time-label">Hours</span>
+      </div>
+      <div class="time-block">
+        <span class="time-number" id="minutes">00</span>
+        <span class="time-label">Minutes</span>
+      </div>
+      <div class="time-block">
+        <span class="time-number" id="seconds">00</span>
+        <span class="time-label">Seconds</span>
+      </div>
+    </div>
+
+    <!-- Notify -->
+    <div class="notify-form">
+      <input type="email" id="emailInput" placeholder="Enter your email for updates"/>
+      <button onclick="notify()">Notify Me</button>
+    </div>
+    <div class="success-msg" id="successMsg">🎉 You're on the list! I'll reach out soon.</div>
+
+    <!-- Socials -->
+    <div class="socials">
+      <a href="https://github.com/pratapcommits" target="_blank" class="social-btn" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/ankit-singh-b52035159/" target="_blank" class="social-btn" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+
+    </div>
+  </div>
+
+  <script>
+    // Countdown to 30 days from now
+    const launch = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
+
+    function tick() {
+      const diff = launch - Date.now();
+      if (diff <= 0) return;
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('days').textContent    = String(d).padStart(2,'0');
+      document.getElementById('hours').textContent   = String(h).padStart(2,'0');
+      document.getElementById('minutes').textContent = String(m).padStart(2,'0');
+      document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+    }
+
+    tick();
+    setInterval(tick, 1000);
+
+    function notify() {
+      const email = document.getElementById('emailInput').value;
+      if (!email || !email.includes('@')) {
+        alert('Please enter a valid email!');
+        return;
+      }
+      document.querySelector('.notify-form').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
