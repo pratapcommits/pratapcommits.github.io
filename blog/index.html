@@ -1,0 +1,148 @@
+---
+layout: default
+title: Blog
+---
+<style>
+  .blog-header { margin-bottom: 3rem; }
+
+  .blog-header .badge {
+    display: inline-block;
+    background: rgba(0,229,160,0.1);
+    border: 1px solid rgba(0,229,160,0.2);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 100px;
+    margin-bottom: 1.2rem;
+  }
+
+  .blog-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #fff 0%, #a0ffe0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-header p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    font-weight: 300;
+  }
+
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #00e5a0, #00c9ff);
+    border-radius: 10px;
+    margin: 2rem 0;
+  }
+
+  .post-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .post-card:hover {
+    border-color: rgba(0,229,160,0.3);
+    transform: translateY(-2px);
+  }
+
+  .post-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .post-card-date {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .post-card-tag {
+    background: rgba(0,229,160,0.1);
+    border: 1px solid rgba(0,229,160,0.2);
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.15rem 0.7rem;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .post-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .post-card-excerpt {
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .post-card-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 1rem;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--muted);
+  }
+</style>
+
+<div class="blog-header">
+  <div class="badge">✦ Writing</div>
+  <h1>Blog</h1>
+  <p>Thoughts on Databricks, AI, data engineering, and building things.</p>
+  <div class="divider"></div>
+</div>
+
+{% if site.posts.size > 0 %}
+  {% for post in site.posts %}
+    <a href="{{ post.url }}" class="post-card">
+      <div class="post-card-meta">
+        <span class="post-card-date">{{ post.date | date: "%B %d, %Y" }}</span>
+        {% for tag in post.tags %}
+          <span class="post-card-tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      <div class="post-card-title">{{ post.title }}</div>
+      {% if post.excerpt %}
+        <div class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</div>
+      {% endif %}
+      <span class="post-card-read-more">Read post <i class="fas fa-arrow-right"></i></span>
+    </a>
+  {% endfor %}
+{% else %}
+  <div class="empty-state">
+    <p>First post coming soon.</p>
+  </div>
+{% endif %}

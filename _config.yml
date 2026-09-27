@@ -1,0 +1,14 @@
+title: Ankit Pratap Singh
+description: Thoughts on Databricks, AI, and building data products
+url: "https://ankitpratapsingh.in"
+baseurl: ""
+author: Ankit Pratap Singh
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+permalink: /blog/:slug/
+
+exclude:
+  - README.md
