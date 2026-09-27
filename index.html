@@ -1,50 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ankit Pratap Singh — Coming Soon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <title>Ankit Pratap Singh — Data Engineering Lead</title>
+  <meta name="description" content="Tech Lead Data Engineering at Coop Sverige. Databricks certified professional building modern data platforms and AI-powered data products."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(10,15,12,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    nav .logo {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #e8f5f0;
-      text-decoration: none;
-    }
-
-    nav .logo span { color: #00e5a0; }
-
-    nav .nav-links { display: flex; gap: 2rem; align-items: center; }
-
-    nav .nav-links a {
-      color: #7a9e8e;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    nav .nav-links a:hover { color: #00e5a0; }
 
     :root {
       --bg: #0a0f0c;
@@ -52,357 +16,653 @@
       --accent2: #00c9ff;
       --text: #e8f5f0;
       --muted: #7a9e8e;
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
       color: var(--text);
       font-family: 'DM Sans', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    /* Animated background blobs */
+    /* ── Blobs ── */
     .blob {
       position: fixed;
       border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.15;
-      animation: float 8s ease-in-out infinite;
+      filter: blur(90px);
+      opacity: 0.10;
       pointer-events: none;
+      z-index: 0;
+      animation: drift 12s ease-in-out infinite;
     }
-    .blob1 { width: 500px; height: 500px; background: #00e5a0; top: -100px; left: -100px; animation-delay: 0s; }
-    .blob2 { width: 400px; height: 400px; background: #00c9ff; bottom: -100px; right: -100px; animation-delay: -4s; }
-    .blob3 { width: 300px; height: 300px; background: #00ff87; top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -2s; }
+    .blob1 { width: 600px; height: 600px; background: #00e5a0; top: -150px; left: -150px; animation-delay: 0s; }
+    .blob2 { width: 450px; height: 450px; background: #00c9ff; bottom: -120px; right: -120px; animation-delay: -6s; }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-30px) scale(1.05); }
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0); }
+      50%       { transform: translate(30px, -30px); }
     }
 
-    /* Grid overlay */
-    .grid {
+    /* ── Nav ── */
+    nav {
       position: fixed;
-      inset: 0;
-      background-image: linear-gradient(rgba(108,99,255,0.05) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(108,99,255,0.05) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,15,12,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    /* Main card */
-    .container {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      padding: 3rem 2rem;
-      max-width: 700px;
-      width: 100%;
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
     }
+    .logo span { color: var(--accent); }
 
-    .badge {
-      display: inline-block;
-      background: rgba(108,99,255,0.15);
-      border: 1px solid rgba(108,99,255,0.3);
-      color: var(--accent);
-      font-size: 0.75rem;
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
       font-weight: 500;
-      letter-spacing: 0.2em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-links .nav-cta {
+      background: rgba(0,229,160,0.1);
+      border: 1px solid rgba(0,229,160,0.25);
+      color: var(--accent);
+      padding: 0.45rem 1.1rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+    }
+    .nav-links .nav-cta:hover {
+      background: rgba(0,229,160,0.18);
+      color: var(--accent);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2.5rem 5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-inner { width: 100%; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0,229,160,0.08);
+      border: 1px solid rgba(0,229,160,0.2);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      padding: 0.4rem 1.2rem;
+      padding: 0.4rem 1.1rem;
       border-radius: 100px;
       margin-bottom: 2rem;
-      animation: fadeUp 0.8s ease both;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.8); }
     }
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-size: clamp(3rem, 8vw, 5.5rem);
       font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      animation: fadeUp 0.8s ease 0.1s both;
-      background: linear-gradient(135deg, #fff 0%, #a0ffe0 100%);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.7s ease 0.1s both;
+    }
+
+    h1 .name-white { color: #fff; }
+    h1 .name-green {
+      background: linear-gradient(135deg, #00e5a0, #00c9ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .subtitle {
-      font-size: 1.1rem;
+    .hero-desc {
+      font-size: 1.15rem;
       color: var(--muted);
       font-weight: 300;
-      margin-bottom: 3rem;
-      animation: fadeUp 0.8s ease 0.2s both;
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.7s ease 0.2s both;
+      line-height: 1.8;
     }
 
-    /* Countdown */
-    .countdown {
+    .hero-desc strong { color: var(--text); font-weight: 500; }
+
+    .hero-actions {
       display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-      animation: fadeUp 0.8s ease 0.3s both;
+      gap: 1rem;
       flex-wrap: wrap;
+      margin-bottom: 4rem;
+      animation: fadeUp 0.7s ease 0.3s both;
     }
 
-    .time-block {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 1.2rem 1.5rem;
-      min-width: 80px;
-      backdrop-filter: blur(10px);
-    }
-
-    .time-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--accent);
-      display: block;
-      line-height: 1;
-    }
-
-    .time-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 0.4rem;
-      display: block;
-    }
-
-    /* Email form */
-    .notify-form {
-      display: flex;
-      gap: 0.75rem;
-      max-width: 420px;
-      margin: 0 auto 3rem;
-      animation: fadeUp 0.8s ease 0.4s both;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .notify-form input {
-      flex: 1;
-      min-width: 200px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 0.85rem 1.2rem;
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .notify-form input:focus {
-      border-color: var(--accent);
-    }
-
-    .notify-form input::placeholder { color: var(--muted); }
-
-    .notify-form button {
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 0.85rem 1.5rem;
+      color: #0a0f0c;
       font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
       font-size: 0.95rem;
-      font-weight: 500;
-      cursor: pointer;
+      padding: 0.85rem 1.8rem;
+      border-radius: 12px;
+      text-decoration: none;
       transition: opacity 0.2s, transform 0.2s;
     }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
 
-    .notify-form button:hover { opacity: 0.85; transform: translateY(-1px); }
-
-    .success-msg {
-      display: none;
-      color: #00e5a0;
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
     }
+    .btn-secondary:hover { border-color: rgba(0,229,160,0.4); transform: translateY(-2px); }
 
-    /* Social icons */
-    .socials {
+    .hero-stats {
       display: flex;
-      justify-content: center;
-      gap: 1rem;
-      animation: fadeUp 0.8s ease 0.5s both;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s ease 0.4s both;
     }
 
-    .social-btn {
-      width: 48px;
-      height: 48px;
+    .stat { }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-top: 0.2rem;
+    }
+
+    /* ── Sections ── */
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 300;
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── Cert grid ── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .cert-card {
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 14px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1.3rem 1.4rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .cert-card:hover { border-color: rgba(0,229,160,0.3); transform: translateY(-2px); }
+
+    .cert-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(0,229,160,0.1);
+      border: 1px solid rgba(0,229,160,0.18);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .cert-icon.azure {
+      background: rgba(0,201,255,0.1);
+      border-color: rgba(0,201,255,0.18);
+      color: var(--accent2);
+    }
+
+    .cert-name {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: 0.3rem;
+    }
+
+    .cert-meta {
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .cert-valid {
+      display: inline-block;
+      background: rgba(0,229,160,0.08);
+      border: 1px solid rgba(0,229,160,0.15);
+      color: var(--accent);
+      font-size: 0.68rem;
+      padding: 0.1rem 0.55rem;
+      border-radius: 100px;
+      margin-top: 0.35rem;
+    }
+
+    /* ── Skills ── */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .skill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.875rem;
+      padding: 0.4rem 1.1rem;
+      border-radius: 100px;
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .skill:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Blog preview ── */
+    .post-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.2s, transform 0.2s;
+      margin-bottom: 1rem;
+    }
+    .post-card:hover { border-color: rgba(0,229,160,0.3); transform: translateY(-2px); }
+
+    .post-tag {
+      display: inline-block;
+      background: rgba(0,229,160,0.08);
+      border: 1px solid rgba(0,229,160,0.15);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.15rem 0.7rem;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+
+    .post-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-excerpt {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 300;
+    }
+
+    .post-read {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-top: 1rem;
+    }
+
+    /* ── Connect ── */
+    .connect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .connect-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem;
+      text-decoration: none;
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: var(--muted);
+      gap: 1rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .connect-card:hover { border-color: rgba(0,229,160,0.3); transform: translateY(-2px); }
+
+    .connect-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(0,229,160,0.08);
+      border: 1px solid rgba(0,229,160,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
       font-size: 1.1rem;
-      text-decoration: none;
-      transition: all 0.2s;
+      flex-shrink: 0;
     }
 
-    .social-btn:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-      transform: translateY(-3px);
+    .connect-label {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .connect-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
     }
 
-    /* Divider */
-    .divider {
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, #00e5a0, #00c9ff);
-      border-radius: 10px;
-      margin: 2rem auto;
-      animation: fadeUp 0.8s ease 0.35s both;
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
     }
+
+    footer a { color: var(--accent); text-decoration: none; }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
+      from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Particles */
-    .particle {
-      position: fixed;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--accent);
-      opacity: 0;
-      animation: particle 6s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    @keyframes particle {
-      0%   { opacity: 0; transform: translateY(100vh) scale(0); }
-      10%  { opacity: 0.6; }
-      90%  { opacity: 0.2; }
-      100% { opacity: 0; transform: translateY(-10vh) scale(1.5); }
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      section { padding: 3.5rem 1.5rem; }
+      .hero-stats { gap: 1.5rem; }
+      .nav-links { gap: 1.2rem; }
     }
   </style>
 </head>
 <body>
 
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+
+  <!-- Nav -->
   <nav>
     <a href="/" class="logo">Ankit<span>.</span></a>
     <div class="nav-links">
       <a href="/about">About</a>
       <a href="/blog">Blog</a>
-      <a href="https://github.com/pratapcommits" target="_blank"><i class="fab fa-github"></i></a>
       <a href="https://www.linkedin.com/in/ankit-singh-b52035159/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/pratapcommits" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="/blog" class="nav-cta">Read Blog</a>
     </div>
   </nav>
 
-  <!-- Background -->
-  <div class="blob blob1"></div>
-  <div class="blob blob2"></div>
-  <div class="blob blob3"></div>
-  <div class="grid"></div>
-
-  <!-- Particles -->
-  <script>
-    for (let i = 0; i < 20; i++) {
-      const p = document.createElement('div');
-      p.className = 'particle';
-      p.style.left = Math.random() * 100 + 'vw';
-      p.style.animationDelay = Math.random() * 6 + 's';
-      p.style.animationDuration = (5 + Math.random() * 5) + 's';
-      p.style.background = Math.random() > 0.5 ? '#00e5a0' : '#00c9ff';
-      document.body.appendChild(p);
-    }
-  </script>
-
-  <div class="container">
-    <div class="badge">✦ Something amazing is coming</div>
-
-    <h1>Ankit Pratap Singh</h1>
-
-    <p class="subtitle">Developer · Creator · Problem Solver<br>Building something great — stay tuned!</p>
-
-    <div class="divider"></div>
-
-    <!-- Countdown -->
-    <div class="countdown">
-      <div class="time-block">
-        <span class="time-number" id="days">00</span>
-        <span class="time-label">Days</span>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Available for talks & collaborations
       </div>
-      <div class="time-block">
-        <span class="time-number" id="hours">00</span>
-        <span class="time-label">Hours</span>
-      </div>
-      <div class="time-block">
-        <span class="time-number" id="minutes">00</span>
-        <span class="time-label">Minutes</span>
-      </div>
-      <div class="time-block">
-        <span class="time-number" id="seconds">00</span>
-        <span class="time-label">Seconds</span>
-      </div>
-    </div>
 
-    <!-- Notify -->
-    <div class="notify-form">
-      <input type="email" id="emailInput" placeholder="Enter your email for updates"/>
-      <button onclick="notify()">Notify Me</button>
-    </div>
-    <div class="success-msg" id="successMsg">🎉 You're on the list! I'll reach out soon.</div>
+      <h1>
+        <span class="name-white">Tech Lead,<br></span>
+        <span class="name-green">Data Engineering.</span>
+      </h1>
 
-    <!-- Socials -->
-    <div class="socials">
-      <a href="https://github.com/pratapcommits" target="_blank" class="social-btn" title="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/ankit-singh-b52035159/" target="_blank" class="social-btn" title="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
+      <p class="hero-desc">
+        Building modern data platforms at <strong>Coop Sverige</strong> in Stockholm.
+        Databricks certified professional — turning raw data into AI-powered products
+        that non-technical teams can actually use.
+      </p>
 
+      <div class="hero-actions">
+        <a href="/blog" class="btn-primary">
+          <i class="fas fa-pen-nib"></i> Read the Blog
+        </a>
+        <a href="/about" class="btn-secondary">
+          <i class="fas fa-user"></i> About Me
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">5×</div>
+          <div class="stat-label">Databricks Certified</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Pipelines Shipped</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <script>
-    // Countdown to 30 days from now
-    const launch = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
+  <!-- Certifications -->
+  <section>
+    <div class="section-label">Credentials</div>
+    <div class="section-title">Certifications</div>
+    <p class="section-sub">Databricks and Microsoft certified — keeping skills sharp and current.</p>
 
-    function tick() {
-      const diff = launch - Date.now();
-      if (diff <= 0) return;
-      const d = Math.floor(diff / 86400000);
-      const h = Math.floor((diff % 86400000) / 3600000);
-      const m = Math.floor((diff % 3600000) / 60000);
-      const s = Math.floor((diff % 60000) / 1000);
-      document.getElementById('days').textContent    = String(d).padStart(2,'0');
-      document.getElementById('hours').textContent   = String(h).padStart(2,'0');
-      document.getElementById('minutes').textContent = String(m).padStart(2,'0');
-      document.getElementById('seconds').textContent = String(s).padStart(2,'0');
-    }
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon"><i class="fas fa-award"></i></div>
+        <div>
+          <div class="cert-name">Databricks Certified Data Engineer Professional</div>
+          <div class="cert-meta">Databricks · Jun 2026</div>
+          <span class="cert-valid">Valid until Jun 2028</span>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><i class="fas fa-award"></i></div>
+        <div>
+          <div class="cert-name">Databricks Certified Data Engineer Associate</div>
+          <div class="cert-meta">Databricks · May 2026</div>
+          <span class="cert-valid">Valid until May 2028</span>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><i class="fas fa-chart-bar"></i></div>
+        <div>
+          <div class="cert-name">Databricks Certified Data Analyst Associate</div>
+          <div class="cert-meta">Databricks · May 2026</div>
+          <span class="cert-valid">Valid until May 2028</span>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><i class="fas fa-database"></i></div>
+        <div>
+          <div class="cert-name">Databricks Lakehouse Fundamentals</div>
+          <div class="cert-meta">Databricks · Jan 2023</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon azure"><i class="fab fa-microsoft"></i></div>
+        <div>
+          <div class="cert-name">Azure Data Engineer Associate (DP-203)</div>
+          <div class="cert-meta">Microsoft · Jan 2022</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon azure"><i class="fab fa-microsoft"></i></div>
+        <div>
+          <div class="cert-name">Azure Fundamentals (AZ-900)</div>
+          <div class="cert-meta">Microsoft · Feb 2021</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    tick();
-    setInterval(tick, 1000);
+  <!-- Skills -->
+  <section>
+    <div class="section-label">Tech Stack</div>
+    <div class="section-title">Skills</div>
+    <p class="section-sub">The tools I use daily to build and ship data products.</p>
 
-    function notify() {
-      const email = document.getElementById('emailInput').value;
-      if (!email || !email.includes('@')) {
-        alert('Please enter a valid email!');
-        return;
-      }
-      document.querySelector('.notify-form').style.display = 'none';
-      document.getElementById('successMsg').style.display = 'block';
-    }
-  </script>
+    <div class="skills-wrap">
+      <span class="skill">Databricks</span>
+      <span class="skill">Apache Spark</span>
+      <span class="skill">Delta Lake</span>
+      <span class="skill">Python</span>
+      <span class="skill">SQL</span>
+      <span class="skill">Unity Catalog</span>
+      <span class="skill">Databricks Genie</span>
+      <span class="skill">MLflow</span>
+      <span class="skill">Azure Data Factory</span>
+      <span class="skill">Microsoft Azure</span>
+      <span class="skill">Streaming Pipelines</span>
+      <span class="skill">Data Lakehouse</span>
+      <span class="skill">ETL / ELT</span>
+      <span class="skill">Data Modeling</span>
+      <span class="skill">dbt</span>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section>
+    <div class="section-label">Writing</div>
+    <div class="section-title">Latest from the Blog</div>
+    <p class="section-sub">Practical posts on Databricks, data engineering, and AI.</p>
+
+    <a href="/blog/getting-started-with-databricks-genie/" class="post-card">
+      <span class="post-tag">Databricks · Genie · AI</span>
+      <div class="post-title">Getting Started with Databricks Genie</div>
+      <div class="post-excerpt">How Genie makes natural language data exploration actually work — setup, sample questions, and where it still needs help.</div>
+      <span class="post-read">Read post <i class="fas fa-arrow-right"></i></span>
+    </a>
+
+    <a href="/blog" class="btn-secondary" style="margin-top:0.5rem; display:inline-flex;">
+      View all posts <i class="fas fa-arrow-right" style="margin-left:0.4rem;"></i>
+    </a>
+  </section>
+
+  <!-- Connect -->
+  <section>
+    <div class="section-label">Contact</div>
+    <div class="section-title">Let's Connect</div>
+    <p class="section-sub">Open to conversations about data engineering, Databricks, and building things.</p>
+
+    <div class="connect-grid">
+      <a href="https://www.linkedin.com/in/ankit-singh-b52035159/" target="_blank" class="connect-card">
+        <div class="connect-icon"><i class="fab fa-linkedin-in"></i></div>
+        <div>
+          <div class="connect-label">LinkedIn</div>
+          <div class="connect-sub">Connect with me</div>
+        </div>
+      </a>
+      <a href="https://github.com/pratapcommits" target="_blank" class="connect-card">
+        <div class="connect-icon"><i class="fab fa-github"></i></div>
+        <div>
+          <div class="connect-label">GitHub</div>
+          <div class="connect-sub">@pratapcommits</div>
+        </div>
+      </a>
+      <a href="/blog" class="connect-card">
+        <div class="connect-icon"><i class="fas fa-pen-nib"></i></div>
+        <div>
+          <div class="connect-label">Blog</div>
+          <div class="connect-sub">Read my writing</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Ankit Pratap Singh · Stockholm, Sweden · <a href="/blog">Blog</a> · <a href="/about">About</a></p>
+  </footer>
+
 </body>
 </html>
