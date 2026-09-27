@@ -9,6 +9,43 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10,15,12,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #e8f5f0;
+      text-decoration: none;
+    }
+
+    nav .logo span { color: #00e5a0; }
+
+    nav .nav-links { display: flex; gap: 2rem; align-items: center; }
+
+    nav .nav-links a {
+      color: #7a9e8e;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav .nav-links a:hover { color: #00e5a0; }
+
     :root {
       --bg: #0a0f0c;
       --accent: #00e5a0;
@@ -259,6 +296,16 @@
   </style>
 </head>
 <body>
+
+  <nav>
+    <a href="/" class="logo">Ankit<span>.</span></a>
+    <div class="nav-links">
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="https://github.com/pratapcommits" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/ankit-singh-b52035159/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </nav>
 
   <!-- Background -->
   <div class="blob blob1"></div>
