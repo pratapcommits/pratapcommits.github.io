@@ -137,13 +137,15 @@
     .avatar {
       width: 72px; height: 72px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #00e5a0, #00c9ff);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: #0a0f0c;
+      overflow: hidden;
+      border: 2px solid rgba(0,229,160,0.35);
       margin-bottom: 1.2rem;
+      flex-shrink: 0;
+    }
+    .avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .profile-name {
@@ -248,18 +250,21 @@
       width: 34px; height: 34px;
       border-radius: 9px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem;
       flex-shrink: 0;
+      padding: 5px;
     }
     .cert-icon.db {
       background: rgba(0,229,160,0.1);
       border: 1px solid rgba(0,229,160,0.18);
-      color: var(--accent);
     }
     .cert-icon.az {
       background: rgba(0,201,255,0.1);
       border: 1px solid rgba(0,201,255,0.18);
-      color: var(--accent2);
+    }
+    .cert-icon img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     .cert-text { }
@@ -426,6 +431,9 @@
         <span class="white">Ankit Pratap Singh</span><br>
         <span class="green">Data Engineering Lead</span>
       </h1>
+      <p style="margin-top:1.25rem;max-width:680px;font-size:1.05rem;line-height:1.75;color:var(--muted);">
+        10+ years across the full arc of data engineering — from SSIS and Apache NiFi, through Kafka streaming, to Medallion architecture on Databricks Lakehouse. I specialise in Azure infrastructure, FinOps, pipeline reliability, ABAC security (row-level and column-level), Asset Bundles, Databricks Apps, and AI/BI dashboards. Here I write the things that hold up in production.
+      </p>
     </div>
 
     <!-- Two columns -->
@@ -433,7 +441,7 @@
 
       <!-- LEFT: Profile -->
       <div class="profile-card">
-        <div class="avatar">A</div>
+        <div class="avatar"><img src="/assets/images/AnkitPratapSingh.png" alt="Ankit Pratap Singh"></div>
         <div class="profile-name">Ankit Pratap Singh</div>
         <div class="profile-role">Tech Lead — Data Engineering</div>
         <div class="profile-location"><i class="fas fa-map-marker-alt"></i> Stockholm, Sweden · Coop Sverige</div>
@@ -456,7 +464,7 @@
             <div class="stat-lbl">Years Exp.</div>
           </div>
           <div class="stat-box">
-            <div class="stat-num">5×</div>
+            <div class="stat-num">6×</div>
             <div class="stat-lbl">Certified</div>
           </div>
         </div>
@@ -466,42 +474,42 @@
 
         <div class="cert-list">
           <div class="cert-item">
-            <div class="cert-icon db"><i class="fas fa-award"></i></div>
+            <div class="cert-icon db"><img src="/assets/images/databricks.png" alt="Databricks"></div>
             <div class="cert-text">
               <div class="cert-title">DE Professional</div>
               <div class="cert-issuer">Databricks · 2026</div>
             </div>
           </div>
           <div class="cert-item">
-            <div class="cert-icon db"><i class="fas fa-award"></i></div>
+            <div class="cert-icon db"><img src="/assets/images/databricks.png" alt="Databricks"></div>
             <div class="cert-text">
               <div class="cert-title">DE Associate</div>
               <div class="cert-issuer">Databricks · 2026</div>
             </div>
           </div>
           <div class="cert-item">
-            <div class="cert-icon db"><i class="fas fa-chart-bar"></i></div>
+            <div class="cert-icon db"><img src="/assets/images/databricks.png" alt="Databricks"></div>
             <div class="cert-text">
               <div class="cert-title">Data Analyst Associate</div>
               <div class="cert-issuer">Databricks · 2026</div>
             </div>
           </div>
           <div class="cert-item">
-            <div class="cert-icon db"><i class="fas fa-database"></i></div>
+            <div class="cert-icon db"><img src="/assets/images/databricks.png" alt="Databricks"></div>
             <div class="cert-text">
               <div class="cert-title">Lakehouse Fundamentals</div>
               <div class="cert-issuer">Databricks · 2023</div>
             </div>
           </div>
           <div class="cert-item">
-            <div class="cert-icon az"><i class="fab fa-microsoft"></i></div>
+            <div class="cert-icon az"><img src="/assets/images/azure.webp" alt="Microsoft Azure"></div>
             <div class="cert-text">
               <div class="cert-title">Azure Data Engineer (DP-203)</div>
               <div class="cert-issuer">Microsoft · 2022</div>
             </div>
           </div>
           <div class="cert-item">
-            <div class="cert-icon az"><i class="fab fa-microsoft"></i></div>
+            <div class="cert-icon az"><img src="/assets/images/azure.webp" alt="Microsoft Azure"></div>
             <div class="cert-text">
               <div class="cert-title">Azure Fundamentals (AZ-900)</div>
               <div class="cert-issuer">Microsoft · 2021</div>
